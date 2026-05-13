@@ -63,11 +63,11 @@ textarea{resize:vertical;line-height:1.6}
 .btn-add{display:flex;align-items:center;gap:8px;background:none;border:1px dashed var(--border2);color:var(--text2);font-size:12px;font-family:var(--mono);padding:11px 14px;border-radius:var(--r);cursor:pointer;width:100%;transition:all 0.15s;letter-spacing:0.06em;margin-top:4px}
 .btn-add:hover{border-color:#555;color:var(--text)}
 .radio-group{display:flex;flex-direction:column;gap:8px}
-.radio-opt{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);cursor:pointer;transition:border 0.15s}
+.radio-opt{display:flex;align-items:center;gap:14px;padding:11px 16px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);cursor:pointer;transition:border 0.15s}
 .radio-opt:hover{border-color:#444}
 .radio-opt.selected{border-color:#555;background:var(--surface2)}
-.radio-opt input{accent-color:white;width:14px;height:14px;flex-shrink:0;cursor:pointer}
-.radio-opt span{font-size:14px;color:var(--text)}
+.radio-opt input{accent-color:white;width:16px;height:16px;flex-shrink:0;cursor:pointer;margin:0}
+.radio-opt span{font-size:14px;color:var(--text);letter-spacing:0.01em}
 .form-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 0;border-top:1px solid var(--border);margin-top:16px}
 .btn-back{background:none;border:1px solid var(--border2);color:var(--text2);font-size:12px;font-family:var(--mono);padding:11px 20px;border-radius:var(--r);cursor:pointer;letter-spacing:0.06em;transition:all 0.15s}
 .btn-back:hover{border-color:#555;color:var(--text)}
@@ -81,6 +81,34 @@ textarea{resize:vertical;line-height:1.6}
 input.error,textarea.error,select.error{border-color:#c0392b}
 @media(max-width:540px){.field-row,.field-row-3{grid-template-columns:1fr}}
 
+
+
+
+.dp-input{width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);font-size:14px;font-family:var(--font);color:var(--text);outline:none;cursor:pointer;transition:border 0.15s;text-align:left;box-sizing:border-box}
+.dp-input:focus,.dp-input:hover{border-color:#555}
+.dp-input.empty{color:var(--text3)}
+.dp-cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.dp-month-year{font-size:14px;font-weight:500;color:var(--text)}
+.dp-day.today{color:var(--text);font-weight:600}
+.dp-day.selected{background:var(--text);color:#0a0a0a;font-weight:600}
+.dp-day.other-month{color:var(--text3);opacity:0.4}
+.dp-day:disabled{opacity:0.2;cursor:default}
+
+.dp-wrap{position:relative;width:100%}
+.dp-btn{width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);color:var(--text3);font-size:14px;font-family:var(--font);cursor:pointer;text-align:left;box-sizing:border-box;transition:border 0.15s}
+.dp-btn:hover{border-color:#555}
+.dp-btn.has-val{color:var(--text)}
+.dp-cal{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#1a1a1a;border:1px solid var(--border2);border-radius:10px;padding:14px;z-index:9999;width:268px;box-shadow:0 12px 32px rgba(0,0,0,0.6)}
+.dp-cal.open{display:block}
+.dp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.dp-nav{background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer;padding:2px 8px;border-radius:4px;line-height:1}
+.dp-nav:hover{background:var(--border2);color:var(--text)}
+.dp-lbl{font-size:13px;font-weight:500;color:var(--text)}
+.dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dp-dow{font-size:10px;color:var(--text3);text-align:center;padding:3px 0;font-family:var(--mono)}
+.dp-day{background:none;border:none;color:var(--text2);font-size:13px;cursor:pointer;padding:6px 2px;border-radius:4px;text-align:center;width:100%;font-family:var(--font)}
+.dp-day:hover{background:var(--border2);color:var(--text)}
+.dp-day.dp-sel{background:var(--text);color:#0a0a0a;font-weight:600}
 </style>
 </head>
 <body>
@@ -117,61 +145,7 @@ input.error,textarea.error,select.error{border-color:#c0392b}
   <div class="section-label">Show details</div>
   <div class="field-row">
     <div class="field"><label>Event name <span class="req">*</span></label><input type="text" name="event_name" required placeholder="e.g. S.A.S.H. x Houseology"></div>
-    <div class="field"><label>Event date <span class="req">*</span></label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-  <select name="event_date_day" required>
-    <option value="">Day</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
-    <option>7</option>
-    <option>8</option>
-    <option>9</option>
-    <option>10</option>
-    <option>11</option>
-    <option>12</option>
-    <option>13</option>
-    <option>14</option>
-    <option>15</option>
-    <option>16</option>
-    <option>17</option>
-    <option>18</option>
-    <option>19</option>
-    <option>20</option>
-    <option>21</option>
-    <option>22</option>
-    <option>23</option>
-    <option>24</option>
-    <option>25</option>
-    <option>26</option>
-    <option>27</option>
-    <option>28</option>
-    <option>29</option>
-    <option>30</option>
-    <option>31</option>
-  </select>
-  <select name="event_date_month">
-    <option value="">Month</option>
-    <option>January</option>
-    <option>February</option>
-    <option>March</option>
-    <option>April</option>
-    <option>May</option>
-    <option>June</option>
-    <option>July</option>
-    <option>August</option>
-    <option>September</option>
-    <option>October</option>
-    <option>November</option>
-    <option>December</option>
-  </select>
-  <select name="event_date_year">
-    <option value="">Year</option>
-    <option>2025</option><option>2026</option><option>2027</option>
-  </select>
-</div></div>
+    <div class="field"><label>Event date <span class="req">*</span></label><div class="dp-wrap"><button type="button" id="dp-event-date" class="dp-btn" required>Select date…</button><input type="hidden" name="event_date"></div></div>
   </div>
   <div class="field-row">
     <div class="field"><label>City <span class="req">*</span></label><input type="text" name="event_city" required placeholder="e.g. Melbourne"></div>
@@ -285,6 +259,19 @@ function buildDots(){const d=document.getElementById('dots');d.innerHTML=Array.f
 function updateDots(p){for(let i=0;i<PAGES;i++){const d=document.getElementById('d'+i);if(d)d.className='dot'+(i===p?' active':i<p?' done':'');}}
 function go(page){document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===page));cur=page;updateDots(page);document.getElementById('prog').style.width=((page/(PAGES-1))*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
 function next(from){const p=document.getElementById('p'+from);const req=p.querySelectorAll('[required]');let ok=true;req.forEach(el=>{el.classList.remove('error');if(!el.value.trim()){el.classList.add('error');ok=false;}});if(!ok)return;go(from+1);}
+
+function showOther(name, show) {
+  const el = document.getElementById('other-' + name);
+  if (el) { el.style.display = show ? 'block' : 'none'; if (!show) el.value = ''; }
+}
+function handleOtherRadio(input) {
+  sel(input);
+  showOther(input.name, input.value === 'Other');
+}
+function handleOtherChk(input) {
+  chk(input);
+  if (input.value === 'Other') showOther(input.name, input.checked);
+}
 function sel(input){const grp=input.closest('.radio-group');grp.querySelectorAll('.radio-opt').forEach(o=>o.classList.remove('selected'));input.closest('.radio-opt').classList.add('selected');}
 function dinnerType(t){document.getElementById('dinner-restaurant').style.display=t==='restaurant'?'block':'none';document.getElementById('dinner-buyout').style.display=t==='buyout'?'block':'none';}
 function addArtist(){
@@ -318,19 +305,11 @@ function addArtist(){
         <div class="field"><label>Full address</label><input type="text" name="a${ai}_hotel_address" placeholder="Street address"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Check-in date</label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-          <select name="a${ai}_checkin_date_day"><option value="">Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
-          <select name="a${ai}_checkin_date_month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
-          <select name="a${ai}_checkin_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
-        </div></div>
+        <div class="field"><label>Check-in date</label><div class=\"dp-wrap\"><button type=\"button\" id=\"dp-a${ai}-ci\" class=\"dp-btn\">Select date…</button><input type=\"hidden\" name=\"a${ai}_checkin_date\"></div></div>
         <div class="field"><label>Check-in time</label><input type="text" name="a${ai}_checkin_time" placeholder="14:00"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Check-out date</label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-          <select name="a${ai}_checkout_date_day"><option value="">Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
-          <select name="a${ai}_checkout_date_month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
-          <select name="a${ai}_checkout_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
-        </div></div>
+        <div class="field"><label>Check-out date</label><div class=\"dp-wrap\"><button type=\"button\" id=\"dp-a${ai}-co\" class=\"dp-btn\">Select date…</button><input type=\"hidden\" name=\"a${ai}_checkout_date\"></div></div>
         <div class="field"><label>Check-out time</label><input type="text" name="a${ai}_checkout_time" placeholder="10:00"></div>
       </div>
       <div class="field-row">
@@ -339,30 +318,95 @@ function addArtist(){
       </div>
     </div>`;
   document.getElementById('artists-container').appendChild(d);
-}
-function toggleAccomm(ai,checked){document.getElementById('acc-'+ai).style.display=checked?'block':'none';}
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbYN1hhSLeXxxBIbTBfB1Jl7kqXx3zK6UF7oUkC0NsLHL9il4LYmpikYpm6EUVDbsgsw/exec'; // Paste your deployed Web App URL here
+  setTimeout(function(){
+    var blk=document.getElementById('artist-'+ai);
+    if(blk){
+      var btns=blk.querySelectorAll('.dp-btn');
+      if(btns[0])initDPEl(btns[0],'a'+ai+'_checkin_date');
+      if(btns[1])initDPEl(btns[1],'a'+ai+'_checkout_date');
+    }
+  },10);
 
-function submit_(e){
-  e.preventDefault();
-  const p=document.getElementById('p6');const req=p.querySelectorAll('[required]');let ok=true;
-  req.forEach(el=>{el.classList.remove('error');if(!el.value.trim()){el.classList.add('error');ok=false;}});
-  if(!ok)return;
-  const data=new FormData(document.getElementById('form'));const obj={};data.forEach((v,k)=>obj[k]=v);
-  localStorage.setItem('promoter-'+Date.now(),JSON.stringify(obj));
-  obj._form_type = 'promoter';
-  if(APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxbYN1hhSLeXxxBIbTBfB1Jl7kqXx3zK6UF7oUkC0NsLHL9il4LYmpikYpm6EUVDbsgsw/exec'){
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify(obj),
-      headers: {'Content-Type': 'application/json'}
-    }).catch(err => console.warn('Sheet submission failed:', err));
-  }
-  navigator.clipboard.writeText(JSON.stringify(obj,null,2)).catch(()=>{});
-  document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===8));
-  document.getElementById('prog').style.width='100%';
 }
-buildDots();addArtist();
+</script>
+<script>
+(function(){
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var pickers=[];
+
+  function makePicker(btn, cal, hidden){
+    var isOpen=false;
+    var now=new Date();
+    var vy=now.getFullYear(), vm=now.getMonth();
+    var sel=null;
+
+    function render(){
+      var html='<div class="dp-head"><button class="dp-nav dp-prev" type="button">&#8249;</button><span class="dp-lbl">'+MONTHS[vm]+' '+vy+'</span><button class="dp-nav dp-next" type="button">&#8250;</button></div><div class="dp-grid">';
+      DAYS.forEach(function(d){html+='<div class="dp-dow">'+d+'</div>';});
+      var first=new Date(vy,vm,1).getDay();
+      var total=new Date(vy,vm+1,0).getDate();
+      for(var i=0;i<first;i++) html+='<div></div>';
+      for(var d=1;d<=total;d++){
+        var isSel=sel&&sel.d===d&&sel.m===vm&&sel.y===vy;
+        html+='<button type="button" class="dp-day'+(isSel?' dp-sel':'')+'" data-d="'+d+'">'+d+'</button>';
+      }
+      html+='</div>';
+      cal.innerHTML=html;
+
+      cal.querySelector('.dp-prev').addEventListener('click',function(e){
+        e.stopPropagation();vm--;if(vm<0){vm=11;vy--;}render();
+      });
+      cal.querySelector('.dp-next').addEventListener('click',function(e){
+        e.stopPropagation();vm++;if(vm>11){vm=0;vy++;}render();
+      });
+      cal.querySelectorAll('.dp-day').forEach(function(b){
+        b.addEventListener('click',function(e){
+          e.stopPropagation();
+          var d=+this.dataset.d;
+          sel={d:d,m:vm,y:vy};
+          var val=d+' '+MONTHS[vm]+' '+vy;
+          btn.textContent=val;
+          btn.classList.add('has-val');
+          if(hidden) hidden.value=val;
+          close();
+        });
+      });
+    }
+
+    function open(){isOpen=true;cal.classList.add('open');render();}
+    function close(){isOpen=false;cal.classList.remove('open');}
+
+    btn.addEventListener('click',function(e){e.stopPropagation();isOpen?close():open();});
+    cal.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(){close();});
+    pickers.push({btn:btn,close:close});
+  }
+
+  window.initDP=function(btnId, hiddenName){
+    var btn=document.getElementById(btnId);
+    if(!btn)return;
+    var wrap=btn.parentNode;
+    var hidden=wrap.querySelector('[name="'+hiddenName+'"]');
+    if(!hidden)return;
+    var cal=document.createElement('div');
+    cal.className='dp-cal';
+    wrap.appendChild(cal);
+    makePicker(btn,cal,hidden);
+  };
+
+  window.initDPEl=function(btn, hiddenName){
+    if(!btn)return;
+    var wrap=btn.parentNode;
+    var hidden=wrap.querySelector('[name="'+hiddenName+'"]');
+    if(!hidden)return;
+    var cal=document.createElement('div');
+    cal.className='dp-cal';
+    wrap.appendChild(cal);
+    makePicker(btn,cal,hidden);
+  };
+})();
+document.addEventListener('DOMContentLoaded',function(){initDP('dp-event-date','event_date');});
 </script>
 </body>
 </html>
