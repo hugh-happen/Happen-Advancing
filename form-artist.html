@@ -369,6 +369,22 @@ function addFlight(type) {
     document.getElementById('intl-flights-container').insertAdjacentHTML('beforeend', flightBlock('intl', intlCount, 'Flight'));
   
 }
+
+function submit_(e) {
+  e.preventDefault();
+  const p = document.getElementById('p4');
+  const req = p.querySelectorAll('[required]');
+  let ok = true;
+  req.forEach(el => { el.classList.remove('error'); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
+  if (!ok) return;
+  
+  const data = new FormData(document.getElementById('form'));
+  const obj = {}; data.forEach((v,k) => obj[k] = v);
+  obj._form_type = 'artist';
+  
+  localStorage.setItem('artist-' + Date.now(), JSON.stringify(obj));
+  
+}
 </script>
 <script>
 (function(){

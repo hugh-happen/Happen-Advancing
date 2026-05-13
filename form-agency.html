@@ -303,6 +303,22 @@ function addShow(){
   setTimeout(function(){var sb=d.querySelector('.dp-btn');if(sb)initDPEl(sb,'show_'+si+'_date');},10);
 
 }
+
+function submit_(e) {
+  e.preventDefault();
+  const p = document.getElementById('p2');
+  const req = p.querySelectorAll('[required]');
+  let ok = true;
+  req.forEach(el => { el.classList.remove('error'); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
+  if (!ok) return;
+  
+  const data = new FormData(document.getElementById('form'));
+  const obj = {}; data.forEach((v,k) => obj[k] = v);
+  obj._form_type = 'agency';
+  
+  localStorage.setItem('agency-' + Date.now(), JSON.stringify(obj));
+  
+}
 </script>
 <script>
 (function(){
