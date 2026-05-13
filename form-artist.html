@@ -103,8 +103,100 @@ input.error,textarea.error{border-color:#c0392b}
   </div>
   <div class="field"><label>Tour manager name & contact number</label><input type="text" name="tour_manager" placeholder="Name + phone number"></div>
   <div class="field-row">
-    <div class="field"><label>Planned arrival date <span class="req">*</span></label><input type="date" name="arrival_date" required></div>
-    <div class="field"><label>Planned departure date <span class="req">*</span></label><input type="date" name="departure_date" required></div>
+    <div class="field"><label>Planned arrival date <span class="req">*</span></label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+  <select name="arrival_date_day">
+    <option value="">Day</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+  </select>
+  <select name="arrival_date_month">
+    <option value="">Month</option>
+    <option>January</option><option>February</option><option>March</option>
+    <option>April</option><option>May</option><option>June</option>
+    <option>July</option><option>August</option><option>September</option>
+    <option>October</option><option>November</option><option>December</option>
+  </select>
+  <select name="arrival_date_year">
+    <option value="">Year</option>
+    <option>2025</option><option>2026</option><option>2027</option>
+  </select>
+</div></div>
+    <div class="field"><label>Planned departure date <span class="req">*</span></label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+  <select name="departure_date_day">
+    <option value="">Day</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+  </select>
+  <select name="departure_date_month">
+    <option value="">Month</option>
+    <option>January</option><option>February</option><option>March</option>
+    <option>April</option><option>May</option><option>June</option>
+    <option>July</option><option>August</option><option>September</option>
+    <option>October</option><option>November</option><option>December</option>
+  </select>
+  <select name="departure_date_year">
+    <option value="">Year</option>
+    <option>2025</option><option>2026</option><option>2027</option>
+  </select>
+</div></div>
   </div>
   <div class="field file-field">
     <label>Tech / hospitality rider <span class="req">*</span></label>
@@ -119,11 +211,17 @@ input.error,textarea.error{border-color:#c0392b}
   <div class="field file-field">
     <label>Press kit</label>
     <div class="file-input-wrap">
-      <input type="file" name="press_file" accept=".pdf,.zip" onchange="fileChosen(this,'press-name')">
+      <input type="file" name="press_file" accept=".pdf,.zip,.jpg,.jpeg,.png,.mp3,.wav,.aif,.aiff" onchange="fileChosen(this,'press-name')" webkitdirectory multiple>
       <span class="file-icon">↑</span>
-      <span class="file-label-text" id="press-name">Upload file</span>
+      <span class="file-label-text" id="press-name">Upload files or folder</span>
     </div>
-    <input type="url" name="press_link" placeholder="https://drive.google.com/… or EPK link" style="margin-top:8px">
+    <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+      <div style="flex:1;height:1px;background:var(--border2)"></div>
+      <span style="font-size:11px;color:var(--text3);font-family:var(--mono)">or</span>
+      <div style="flex:1;height:1px;background:var(--border2)"></div>
+    </div>
+    <input type="url" name="press_link" placeholder="Paste Google Drive folder link" style="margin-top:8px">
+    <div style="font-size:11px;color:var(--text3);margin-top:5px;font-family:var(--mono)">Share the folder first — make sure "Anyone with the link" can view</div>
   </div>
   <div class="form-nav">
     <div class="step-counter">1 / 5</div>
@@ -131,37 +229,31 @@ input.error,textarea.error{border-color:#c0392b}
   </div>
 </div>
 
-<!-- Page 1: International flights responsibility -->
+<!-- Page 1: Flight responsibility (combined) -->
 <div class="page" id="p1">
-  <div class="page-title">International flights</div>
-  <div class="page-sub">Who is responsible for booking international flights?</div>
-  <div class="field">
+  <div class="page-title">Flights</div>
+  <div class="page-sub">Who is responsible for booking each flight type?</div>
+
+  <div class="field" style="margin-bottom:24px">
+    <label>International flights <span class="req">*</span></label>
     <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="intl_flights_resp" value="Artist" onchange="sel(this)"><span>Artist</span></label>
-      <label class="radio-opt"><input type="radio" name="intl_flights_resp" value="Solid Circles" onchange="sel(this)"><span>Solid Circles</span></label>
+      <label class="radio-opt"><input type="radio" name="intl_flights_resp" value="Artist" onchange="sel(this);updateFlightLogic()"><span>Artist</span></label>
+      <label class="radio-opt"><input type="radio" name="intl_flights_resp" value="Solid Circles" onchange="sel(this);updateFlightLogic()"><span>Solid Circles</span></label>
     </div>
   </div>
+
+  <div class="field">
+    <label>Domestic flights <span class="req">*</span></label>
+    <div class="radio-group">
+      <label class="radio-opt"><input type="radio" name="dom_flights_resp" value="Artist" onchange="sel(this);updateFlightLogic()"><span>Artist</span></label>
+      <label class="radio-opt"><input type="radio" name="dom_flights_resp" value="Solid Circles" onchange="sel(this);updateFlightLogic()"><span>Solid Circles</span></label>
+    </div>
+  </div>
+
   <div class="form-nav">
     <button type="button" class="btn-back" onclick="go(0)">← Back</button>
     <div class="step-counter">2 / 5</div>
-    <button type="button" class="btn-next" onclick="next(1)">Next →</button>
-  </div>
-</div>
-
-<!-- Page 2: Domestic flights responsibility -->
-<div class="page" id="p2">
-  <div class="page-title">Domestic flights</div>
-  <div class="page-sub">Who is responsible for booking domestic flights?</div>
-  <div class="field">
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="dom_flights_resp" value="Artist" onchange="sel(this)"><span>Artist</span></label>
-      <label class="radio-opt"><input type="radio" name="dom_flights_resp" value="Solid Circles" onchange="sel(this)"><span>Solid Circles</span></label>
-    </div>
-  </div>
-  <div class="form-nav">
-    <button type="button" class="btn-back" onclick="go(1)">← Back</button>
-    <div class="step-counter">3 / 5</div>
-    <button type="button" class="btn-next" onclick="next(2)">Next →</button>
+    <button type="button" class="btn-next" onclick="nextFlight()">Next →</button>
   </div>
 </div>
 
@@ -172,9 +264,9 @@ input.error,textarea.error{border-color:#c0392b}
   <div id="intl-flights-container"></div>
   <button type="button" class="btn-add" onclick="addFlight('intl')">+ Add international flight</button>
   <div class="form-nav">
-    <button type="button" class="btn-back" onclick="go(2)">← Back</button>
+    <button type="button" class="btn-back" onclick="back()">← Back</button>
     <div class="step-counter">4 / 5</div>
-    <button type="button" class="btn-next" onclick="next(3)">Next →</button>
+    <button type="button" class="btn-next" onclick="next('p3')">Next →</button>
   </div>
 </div>
 
@@ -185,9 +277,9 @@ input.error,textarea.error{border-color:#c0392b}
   <div id="dom-flights-container"></div>
   <button type="button" class="btn-add" onclick="addFlight('dom')">+ Add domestic flight</button>
   <div class="form-nav">
-    <button type="button" class="btn-back" onclick="go(3)">← Back</button>
+    <button type="button" class="btn-back" onclick="back()">← Back</button>
     <div class="step-counter">5 / 5</div>
-    <button type="button" class="btn-next" onclick="next(4)">Next →</button>
+    <button type="button" class="btn-next" onclick="next('p4')">Next →</button>
   </div>
 </div>
 
@@ -196,7 +288,7 @@ input.error,textarea.error{border-color:#c0392b}
   <div class="section-label">Notes</div>
   <div class="field"><label>Notes / comments</label><textarea name="notes" rows="6" placeholder="Any additional information, preferences or requirements…"></textarea></div>
   <div class="form-nav">
-    <button type="button" class="btn-back" onclick="go(4)">← Back</button>
+    <button type="button" class="btn-back" onclick="back()">← Back</button>
     <div class="step-counter">6 / 6</div>
     <button type="submit" class="btn-submit">Submit →</button>
   </div>
@@ -211,38 +303,97 @@ input.error,textarea.error{border-color:#c0392b}
   </div>
 </div>
 
-</form>
-</div>
+</form><script>
+const ALL_PAGES = ['p0','p1','p2','p3','p4'];
+let cur = 0, intlCount = 0, domCount = 0;
+let skipIntl = false, skipDom = false;
 
-<script>
-const PAGES = 6;
-let cur=0, intlCount=0, domCount=0;
+function getPageList() {
+  const list = ['p0','p1'];
+  if (!skipIntl) list.push('p2');
+  if (!skipDom)  list.push('p3');
+  list.push('p4');
+  return list;
+}
 
-function buildDots(){
-  const d=document.getElementById('dots');
-  d.innerHTML=Array.from({length:PAGES},(_,i)=>`<div class="dot ${i===0?'active':''}" id="d${i}"></div>`).join('');
+function buildDots() {
+  const d = document.getElementById('dots');
+  const total = getPageList().length;
+  d.innerHTML = Array.from({length: total}, (_,i) =>
+    `<div class="dot ${i===0?'active':''}" id="dot${i}"></div>`
+  ).join('');
 }
-function updateDots(p){
-  for(let i=0;i<PAGES;i++){const d=document.getElementById('d'+i);if(d)d.className='dot'+(i===p?' active':i<p?' done':'');}
+
+function updateDots(pos) {
+  const total = getPageList().length;
+  for (let i = 0; i < total; i++) {
+    const d = document.getElementById('dot'+i);
+    if (d) d.className = 'dot' + (i===pos?' active': i<pos?' done':'');
+  }
 }
-function go(page){
-  document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===page));
-  cur=page;updateDots(page);
-  document.getElementById('prog').style.width=((page/(PAGES-1))*100)+'%';
-  window.scrollTo({top:0,behavior:'smooth'});
+
+function goToPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  const list = getPageList();
+  const pos = list.indexOf(pageId);
+  cur = pos;
+  updateDots(pos);
+  const total = list.length;
+  document.getElementById('prog').style.width = ((pos / (total-1)) * 100) + '%';
+  window.scrollTo({top:0, behavior:'smooth'});
 }
-function next(from){
-  const p=document.getElementById('p'+from);
-  const req=p.querySelectorAll('[required]');let ok=true;
-  req.forEach(el=>{el.classList.remove('error');if(!el.value.trim()){el.classList.add('error');ok=false;}});
-  if(!ok)return;go(from+1);
+
+function go(n) {
+  const list = getPageList();
+  if (typeof n === 'number') goToPage(list[Math.min(n, list.length-1)]);
+  else goToPage(n);
 }
-function sel(input){
-  const grp=input.closest('.radio-group');
-  grp.querySelectorAll('.radio-opt').forEach(o=>o.classList.remove('selected'));
+
+function next(fromId) {
+  const pageId = fromId || getPageList()[cur];
+  const p = document.getElementById(pageId);
+  const req = p ? p.querySelectorAll('[required]') : [];
+  let ok = true;
+  req.forEach(el => { el.classList.remove('error'); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
+  if (!ok) return;
+  const list = getPageList();
+  const pos = list.indexOf(pageId);
+  if (pos < list.length - 1) goToPage(list[pos + 1]);
+}
+
+function back() {
+  const list = getPageList();
+  if (cur > 0) goToPage(list[cur - 1]);
+}
+
+function updateFlightLogic() {
+  const iv = document.querySelector('input[name="intl_flights_resp"]:checked');
+  const dv = document.querySelector('input[name="dom_flights_resp"]:checked');
+  skipIntl = iv && iv.value === 'Solid Circles';
+  skipDom  = dv && dv.value === 'Solid Circles';
+  buildDots();
+  updateDots(cur);
+}
+
+function nextFlight() {
+  const iv = document.querySelector('input[name="intl_flights_resp"]:checked');
+  const dv = document.querySelector('input[name="dom_flights_resp"]:checked');
+  if (!iv) { alert('Please select who books international flights'); return; }
+  if (!dv) { alert('Please select who books domestic flights'); return; }
+  updateFlightLogic();
+  next('p1');
+}
+
+function sel(input) {
+  const grp = input.closest('.radio-group');
+  grp.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
   input.closest('.radio-opt').classList.add('selected');
 }
+
 function flightBlock(prefix, count, label) {
+  const days = Array.from({length:31},(_,i)=>`<option>${i+1}</option>`).join('');
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'].map(m=>`<option>${m}</option>`).join('');
   return `<div class="flight-block" id="${prefix}-flight-${count}">
     <div class="flight-block-header">
       <span class="flight-block-label">${label} ${count+1}</span>
@@ -250,7 +401,13 @@ function flightBlock(prefix, count, label) {
     </div>
     <div class="flight-grid">
       <div class="field"><label>Day</label><input type="text" name="${prefix}_flight_${count}_day" placeholder="e.g. Monday"></div>
-      <div class="field"><label>Date</label><input type="date" name="${prefix}_flight_${count}_date"></div>
+      <div class="field"><label>Date</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <select name="${prefix}_flight_${count}_date_day"><option value="">Day</option>${days}</select>
+          <select name="${prefix}_flight_${count}_date_month"><option value="">Month</option>${months}</select>
+          <select name="${prefix}_flight_${count}_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
+        </div>
+      </div>
       <div class="field"><label>Flight number</label><input type="text" name="${prefix}_flight_${count}_num" placeholder="e.g. QR0904"></div>
       <div class="field"><label>Departing airport</label><input type="text" name="${prefix}_flight_${count}_dep_airport" placeholder="e.g. DOH"></div>
       <div class="field"><label>Departure time</label><input type="text" name="${prefix}_flight_${count}_dep_time" placeholder="e.g. 20:20"></div>
@@ -261,41 +418,38 @@ function flightBlock(prefix, count, label) {
     </div>
   </div>`;
 }
-function addFlight(type){
-  if(type==='intl'){
-    document.getElementById('intl-flights-container').insertAdjacentHTML('beforeend',flightBlock('intl',intlCount,'Flight'));
+
+function addFlight(type) {
+  if (type==='intl') {
+    document.getElementById('intl-flights-container').insertAdjacentHTML('beforeend', flightBlock('intl', intlCount, 'Flight'));
     intlCount++;
   } else {
-    document.getElementById('dom-flights-container').insertAdjacentHTML('beforeend',flightBlock('dom',domCount,'Flight'));
+    document.getElementById('dom-flights-container').insertAdjacentHTML('beforeend', flightBlock('dom', domCount, 'Flight'));
     domCount++;
   }
 }
-function fileChosen(input,labelId){
-  const label=document.getElementById(labelId);
-  if(input.files&&input.files[0])label.textContent=input.files[0].name;
-}
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbYN1hhSLeXxxBIbTBfB1Jl7kqXx3zK6UF7oUkC0NsLHL9il4LYmpikYpm6EUVDbsgsw/exec'; // Paste your deployed Web App URL here
 
-function submit_(e){
-  e.preventDefault();
-  const data=new FormData(document.getElementById('form'));
-  const obj={};data.forEach((v,k)=>obj[k]=v);
-  localStorage.setItem('artist-'+Date.now(),JSON.stringify(obj));
-  obj._form_type = 'artist';
-  if(APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxbYN1hhSLeXxxBIbTBfB1Jl7kqXx3zK6UF7oUkC0NsLHL9il4LYmpikYpm6EUVDbsgsw/exec'){
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify(obj),
-      headers: {'Content-Type': 'application/json'}
-    }).catch(err => console.warn('Sheet submission failed:', err));
-  }
-  navigator.clipboard.writeText(JSON.stringify(obj,null,2)).catch(()=>{});
-  document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===7));
-  document.getElementById('prog').style.width='100%';
+function fileChosen(input, labelId) {
+  const label = document.getElementById(labelId);
+  if (input.files && input.files[0]) label.textContent = input.files[0].name;
 }
+
+function submit_(e) {
+  e.preventDefault();
+  const data = new FormData(document.getElementById('form'));
+  const obj = {}; data.forEach((v,k) => obj[k]=v);
+  obj._form_type = 'artist';
+  localStorage.setItem('artist-'+Date.now(), JSON.stringify(obj));
+  navigator.clipboard.writeText(JSON.stringify(obj,null,2)).catch(()=>{});
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbYN1hhSLeXxxBIbTBfB1Jl7kqXx3zK6UF7oUkC0NsLHL9il4LYmpikYpm6EUVDbsgsw/exec';
+  fetch(APPS_SCRIPT_URL, {method:'POST', body:JSON.stringify(obj), headers:{'Content-Type':'application/json'}}).catch(err=>console.warn(err));
+  document.querySelectorAll('.page').forEach((p,i) => p.classList.toggle('active', i===5));
+  document.getElementById('prog').style.width = '100%';
+}
+
 buildDots();
 addFlight('intl');
 addFlight('dom');
-</script>
+</script></script>
 </body>
 </html>

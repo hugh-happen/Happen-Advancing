@@ -117,7 +117,61 @@ input.error,textarea.error,select.error{border-color:#c0392b}
   <div class="section-label">Show details</div>
   <div class="field-row">
     <div class="field"><label>Event name <span class="req">*</span></label><input type="text" name="event_name" required placeholder="e.g. S.A.S.H. x Houseology"></div>
-    <div class="field"><label>Event date <span class="req">*</span></label><input type="date" name="event_date" required></div>
+    <div class="field"><label>Event date <span class="req">*</span></label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+  <select name="event_date_day" required>
+    <option value="">Day</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+  </select>
+  <select name="event_date_month">
+    <option value="">Month</option>
+    <option>January</option>
+    <option>February</option>
+    <option>March</option>
+    <option>April</option>
+    <option>May</option>
+    <option>June</option>
+    <option>July</option>
+    <option>August</option>
+    <option>September</option>
+    <option>October</option>
+    <option>November</option>
+    <option>December</option>
+  </select>
+  <select name="event_date_year">
+    <option value="">Year</option>
+    <option>2025</option><option>2026</option><option>2027</option>
+  </select>
+</div></div>
   </div>
   <div class="field-row">
     <div class="field"><label>City <span class="req">*</span></label><input type="text" name="event_city" required placeholder="e.g. Melbourne"></div>
@@ -264,11 +318,19 @@ function addArtist(){
         <div class="field"><label>Full address</label><input type="text" name="a${ai}_hotel_address" placeholder="Street address"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Check-in date</label><input type="date" name="a${ai}_checkin_date"></div>
+        <div class="field"><label>Check-in date</label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <select name="a${ai}_checkin_date_day"><option value="">Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
+          <select name="a${ai}_checkin_date_month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+          <select name="a${ai}_checkin_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
+        </div></div>
         <div class="field"><label>Check-in time</label><input type="text" name="a${ai}_checkin_time" placeholder="14:00"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Check-out date</label><input type="date" name="a${ai}_checkout_date"></div>
+        <div class="field"><label>Check-out date</label><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <select name="a${ai}_checkout_date_day"><option value="">Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
+          <select name="a${ai}_checkout_date_month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+          <select name="a${ai}_checkout_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
+        </div></div>
         <div class="field"><label>Check-out time</label><input type="text" name="a${ai}_checkout_time" placeholder="10:00"></div>
       </div>
       <div class="field-row">

@@ -244,7 +244,13 @@ function addShow(){
       ${si>0?`<button type="button" class="btn-remove" onclick="this.closest('.show-block').remove()">Remove</button>`:''}
     </div>
     <div class="field-row">
-      <div class="field"><label>Show date</label><input type="date" name="show_${si}_date"></div>
+      <div class="field"><label>Show date</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <select name="show_${si}_date_day"><option value="">Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
+          <select name="show_${si}_date_month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+          <select name="show_${si}_date_year"><option value="">Year</option><option>2025</option><option>2026</option><option>2027</option></select>
+        </div>
+      </div>
       <div class="field"><label>City</label><input type="text" name="show_${si}_city" placeholder="e.g. Melbourne"></div>
     </div>
     <div class="field-row">
